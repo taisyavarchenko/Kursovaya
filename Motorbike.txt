@@ -1,0 +1,12 @@
+Machine: Motobike
+Color: Red
+Price: 200 000
+Power: 300w
+Create Date: 20/04/2020
+Mark: Mazda
+Model: RX-8
+Sizes: 100/140/175
+Fuel: 95
+Type Control: AUTO
+Expense: 3.2
+Volume: 45

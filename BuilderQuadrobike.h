@@ -14,17 +14,19 @@ public:
 	 * Все этапы производства работают с одним и тем же экземпляром продукта.
 	 */
 
-	void SetColor()const override;
-	void SetPrice()const override;
-	void SetPower()const override;
-	void SetCreateDate()const override;
-	void SetCreatorCompany()const override;
-	void SetModel()const override;
-	void SetSizes()const override;
-	void SetFuel()const override;
-	void SetTypeControl()const override;
-	void SetExpense()const override;
-	void SetVolume()const override;
+	void SetColor() override;
+	void SetPrice() override;
+	void SetPower() override;
+	void SetCreateDate() override;
+	void SetCreatorCompany() override;
+	void SetModel() override;
+	void SetSizes() override;
+	void SetFuel() override;
+	void SetTypeControl() override;
+	void SetExpense() override;
+	void SetVolume() override;
+	void LoadParams() override;
+	void EditParams() override;
 
 	/**
 	 * Конкретные Строители должны предоставить свои собственные методы

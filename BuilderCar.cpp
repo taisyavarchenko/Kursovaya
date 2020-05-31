@@ -2,6 +2,7 @@
 
 BuilderCar::BuilderCar()
 {
+	this->LoadParams();
 	this->Reset();
 }
 
@@ -13,62 +14,99 @@ BuilderCar::~BuilderCar()
 void BuilderCar::Reset()
 {
 	this->product = new Machine();
-	this->product->machine.push_back("Machine : Car");
+	this->product->machine.resize(12);
+	this->product->machine[0] = getArray()[0];
 }
 
-void BuilderCar::SetColor() const
+void BuilderCar::SetColor()
 {
-	this->product->machine.push_back("Color : Red");
+	this->product->machine[1] = getArray()[1];
 }
 
-void BuilderCar::SetPrice() const
+void BuilderCar::SetPrice()
 {
-	this->product->machine.push_back("Price : 20000P");
+	this->product->machine[2] = getArray()[2];
 }
 
-void BuilderCar::SetPower() const
+void BuilderCar::SetPower()
 {
-	this->product->machine.push_back("Power : 300");
+	this->product->machine[3] = getArray()[3];
 }
 
-void BuilderCar::SetCreateDate() const
+void BuilderCar::SetCreateDate()
 {
-	this->product->machine.push_back("Date : 14/02/2020");
+	this->product->machine[4] = getArray()[4];
 }
 
-void BuilderCar::SetCreatorCompany() const
+void BuilderCar::SetCreatorCompany()
 {
-	this->product->machine.push_back("Mark : Mazda");
+	this->product->machine[5] = getArray()[5];
 }
 
-void BuilderCar::SetModel() const
+void BuilderCar::SetModel()
 {
-	this->product->machine.push_back("Model : RX-8");
+	this->product->machine[6] = getArray()[6];
 }
 
-void BuilderCar::SetSizes() const
+void BuilderCar::SetSizes()
 {
-	this->product->machine.push_back("Sizes : 242/145/140");
+	this->product->machine[7] = getArray()[7];
 }
 
-void BuilderCar::SetFuel() const
+void BuilderCar::SetFuel()
 {
-	this->product->machine.push_back("Fuel : Dizel");
+	this->product->machine[8] = getArray()[8];
 }
 
-void BuilderCar::SetTypeControl() const
+void BuilderCar::SetTypeControl()
 {
-	this->product->machine.push_back("Control : Auto");
+	this->product->machine[9] = getArray()[9];
 }
 
-void BuilderCar::SetExpense() const
+void BuilderCar::SetExpense()
 {
-	this->product->machine.push_back("Expense : 3.6/100 km");
+	this->product->machine[10] = getArray()[10];
 }
 
-void BuilderCar::SetVolume() const
+void BuilderCar::SetVolume()
 {
-	this->product->machine.push_back("Volume : 56L");
+	this->product->machine[11] = getArray()[11];
+}
+
+void BuilderCar::LoadParams()
+{
+	getArray().resize(12);
+	getArray()[0] = "Machine: Car";
+	getArray()[1] = "Color: Red";
+	getArray()[2] = "Price: 200 000";
+	getArray()[3] = "Power: 300w";
+	getArray()[4] = "Create Date: 20/04/2020";
+	getArray()[5] = "Mark: Mazda";
+	getArray()[6] = "Model: RX-8";
+	getArray()[7] = "Sizes: 100/140/175";
+	getArray()[8] = "Fuel: 95";
+	getArray()[9] = "Type Control: AUTO";
+	getArray()[10] = "Expense: 3.2";
+	getArray()[11] = "Volume: 45";
+}
+
+void BuilderCar::EditParams()
+{
+	system("cls");
+	int value;
+	string s_value;
+	cout << "Выберите параметр для изменения: " << endl;
+	for (size_t i = 0; i < getArray().size(); i++)
+	{
+		cout << "[" << i << "] " <<  getArray()[i] << endl;
+	}
+	cout << "Выш выбор: ";
+	cin >> value;
+	system("cls");
+	cout << getArray()[value] << endl
+		<< "Новое значение: ";
+	cin >> s_value;
+	getArray()[value] = getArray()[value].substr(0, getArray()[value].find(":")+ 1) + " " + s_value;
 }
 
 Machine* BuilderCar::GetProduct()

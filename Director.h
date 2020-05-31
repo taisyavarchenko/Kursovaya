@@ -1,5 +1,7 @@
 #pragma once
 #include "Builder.h"
+#include "Machine.h"
+#include "fstream"
 class Director {
 
 private:
@@ -20,7 +22,37 @@ public:
 	 * Директор может строить несколько вариаций продукта, используя одинаковые
 	 * шаги построения.
 	 */
+	void Save(vector <Machine*> arrayMachines) {
+		ofstream fo_car("Car.txt");
+		ofstream fo_moto("Motobike.txt");
+		ofstream fo_quad("Quadrobike.txt");
+		for (size_t i = 0; i < arrayMachines.size(); i++)
+		{
+			if (arrayMachines[i]->machine[0] == "Machine: Car")
+				for (size_t j = 0; j < arrayMachines[i]->machine.size(); j++)
+				{
+					fo_car << arrayMachines[i]->machine[j] << endl;
+				}
+			if (arrayMachines[i]->machine[0] == "Machine: Motobike")
+				for (size_t j = 0; j < arrayMachines[i]->machine.size(); j++)
+				{
+					fo_moto << arrayMachines[i]->machine[j] << endl;
+				}
+			if (arrayMachines[i]->machine[0] == "Machine: Quadrobike")
+				for (size_t j = 0; j < arrayMachines[i]->machine.size(); j++)
+				{
+					fo_quad << arrayMachines[i]->machine[j] << endl;
+				}
+		}
+		fo_car.close();
+		fo_moto.close();
+		fo_quad.close();
+	}
+	vector <Machine*> Load() {
+		ifstream fin("Car.txt");
 
+		fin.close();
+	}
 	void BuildFullProduct() {
 		this->builder->SetColor();
 		this->builder->SetPrice();

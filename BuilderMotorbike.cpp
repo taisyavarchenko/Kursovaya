@@ -2,6 +2,7 @@
 
 BuilderMotorbike::BuilderMotorbike()
 {
+	this->LoadParams();
 	this->Reset();
 }
 
@@ -13,62 +14,99 @@ BuilderMotorbike::~BuilderMotorbike()
 void BuilderMotorbike::Reset()
 {
 	this->product = new Machine();
-	this->product->machine.push_back("Machine : Motorbike");
+	this->product->machine.resize(12);
+	this->product->machine[0] = getArray()[0];
 }
 
-void BuilderMotorbike::SetColor() const
+void BuilderMotorbike::SetColor()
 {
-	this->product->machine.push_back("Color : Red");
+	this->product->machine[1] = getArray()[1];
 }
 
-void BuilderMotorbike::SetPrice() const
+void BuilderMotorbike::SetPrice()
 {
-	this->product->machine.push_back("Price : 20000P");
+	this->product->machine[2] = getArray()[2];
 }
 
-void BuilderMotorbike::SetPower() const
+void BuilderMotorbike::SetPower()
 {
-	this->product->machine.push_back("Power : 300");
+	this->product->machine[3] = getArray()[3];
 }
 
-void BuilderMotorbike::SetCreateDate() const
+void BuilderMotorbike::SetCreateDate()
 {
-	this->product->machine.push_back("Date : 14/02/2020");
+	this->product->machine[4] = getArray()[4];
 }
 
-void BuilderMotorbike::SetCreatorCompany() const
+void BuilderMotorbike::SetCreatorCompany()
 {
-	this->product->machine.push_back("Mark : Mazda");
+	this->product->machine[5] = getArray()[5];
 }
 
-void BuilderMotorbike::SetModel() const
+void BuilderMotorbike::SetModel()
 {
-	this->product->machine.push_back("Model : RX-8");
+	this->product->machine[6] = getArray()[6];
 }
 
-void BuilderMotorbike::SetSizes() const
+void BuilderMotorbike::SetSizes()
 {
-	this->product->machine.push_back("Sizes : 242/145/140");
+	this->product->machine[7] = getArray()[7];
 }
 
-void BuilderMotorbike::SetFuel() const
+void BuilderMotorbike::SetFuel()
 {
-	this->product->machine.push_back("Fuel : Dizel");
+	this->product->machine[8] = getArray()[8];
 }
 
-void BuilderMotorbike::SetTypeControl() const
+void BuilderMotorbike::SetTypeControl()
 {
-	this->product->machine.push_back("Control : Auto");
+	this->product->machine[9] = getArray()[9];
 }
 
-void BuilderMotorbike::SetExpense() const
+void BuilderMotorbike::SetExpense()
 {
-	this->product->machine.push_back("Expense : 3.6/100 km");
+	this->product->machine[10] = getArray()[10];
 }
 
-void BuilderMotorbike::SetVolume() const
+void BuilderMotorbike::SetVolume()
 {
-	this->product->machine.push_back("Volume : 56L");
+	this->product->machine[11] = getArray()[11];
+}
+
+void BuilderMotorbike::LoadParams()
+{
+	getArray().resize(12);
+	getArray()[0] = "Machine: Motobike";
+	getArray()[1] = "Color: Red";
+	getArray()[2] = "Price: 200 000";
+	getArray()[3] = "Power: 300w";
+	getArray()[4] = "Create Date: 20/04/2020";
+	getArray()[5] = "Mark: Mazda";
+	getArray()[6] = "Model: RX-8";
+	getArray()[7] = "Sizes: 100/140/175";
+	getArray()[8] = "Fuel: 95";
+	getArray()[9] = "Type Control: AUTO";
+	getArray()[10] = "Expense: 3.2";
+	getArray()[11] = "Volume: 45";
+}
+
+void BuilderMotorbike::EditParams()
+{
+	system("cls");
+	int value;
+	string s_value;
+	cout << "Выберите параметр для изменения: " << endl;
+	for (size_t i = 0; i < getArray().size(); i++)
+	{
+		cout << "[" << i << "] " << getArray()[i] << endl;
+	}
+	cout << "Выш выбор: ";
+	cin >> value;
+	system("cls");
+	cout << getArray()[value] << endl
+		<< "Новое значение: ";
+	cin >> s_value;
+	getArray()[value] = getArray()[value].substr(0, getArray()[value].find(":") + 1) + " " + s_value;
 }
 
 Machine* BuilderMotorbike::GetProduct()
