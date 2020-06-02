@@ -107,6 +107,7 @@ int main() {
 			director->Save(arrayMachines);
 			break;
 		case '4':
+			arrayMachines = director->Load();
 			break;
 		case '5':
 			for (size_t i = 0; i < arrayMachines.size(); i++)

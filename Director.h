@@ -1,7 +1,8 @@
 #pragma once
 #include "Builder.h"
 #include "Machine.h"
-#include "fstream"
+#include <fstream>
+#include <string>
 class Director {
 
 private:
@@ -49,9 +50,49 @@ public:
 		fo_quad.close();
 	}
 	vector <Machine*> Load() {
-		ifstream fin("Car.txt");
-
+		string line;
+		vector <Machine*> tmp;
+		ifstream fin;
+		fin.open("Car.txt");
+		while (!fin.eof())
+		{
+			if (fin.peek() == -1)
+				break;
+			tmp.push_back(new Machine);
+			for (size_t i = 0; i < 12; i++)
+			{
+				getline(fin, line);
+				tmp[tmp.size() - 1]->machine.push_back(line);
+			}
+		}
 		fin.close();
+		fin.open("Motobike.txt");
+		while (!fin.eof())
+		{
+			if (fin.peek() == -1)
+				break;
+			tmp.push_back(new Machine);
+			for (size_t i = 0; i < 12; i++)
+			{
+				getline(fin, line);
+				tmp[tmp.size() - 1]->machine.push_back(line);
+			}
+		}
+		fin.close();
+		fin.open("Quadrobike.txt");
+		while (!fin.eof())
+		{
+			if (fin.peek() == -1)
+				break;
+			tmp.push_back(new Machine);
+			for (size_t i = 0; i < 12; i++)
+			{
+				getline(fin, line);
+				tmp[tmp.size() - 1]->machine.push_back(line);
+			}
+		}
+		fin.close();
+		return tmp;
 	}
 	void BuildFullProduct() {
 		this->builder->SetColor();
