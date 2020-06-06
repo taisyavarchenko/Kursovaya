@@ -102,10 +102,19 @@ void BuilderQuadrobike::EditParams()
 	}
 	cout << "Выш выбор: ";
 	cin >> value;
+	if (value < 0 || value > getArray().size()-1)
+	{
+		throw (string)"Ошибка выбора параметра";
+	}
+	cin.ignore(256, '\n');
 	system("cls");
 	cout << getArray()[value] << endl
 		<< "Новое значение: ";
-	cin >> s_value;
+	getline(cin, s_value);
+	if (s_value.empty())
+	{
+		throw (string)"Значение не может быть пустое";
+	}
 	getArray()[value] = getArray()[value].substr(0, getArray()[value].find(":") + 1) + " " + s_value;
 }
 
